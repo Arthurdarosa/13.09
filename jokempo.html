@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jokempo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="conteiner">
+     <main>
+        <h1>pedra papel tesoura</h1>
+        <div class="escolha">
+            <img id="papel" src="papel.png" alt="papel" height="300px" width="300px">
+            <img id="tesoura" src="tesoura.png" alt="tesoura" height="300px" width="300px">
+            <img id="pedra" src="pedra.png" alt="pedras" height="300px" width="300px">
+        </div>
+        <h1 id="resultado"></h1>
+        <div class="jogada">
+          <p>placar:</p>
+          <span id="Seuplacar"></span>
+          <span id="Placarpc"></span>
+          <br>
+          <span id="jogadauser"></span>
+          <span id="jogadapc"></span>
+          <br>
+          <span id="Nempate"></span>
+        </div>
+     </main>
+    </div>
+
+    <script>
+
+       
+        /*1 pedra
+          2 papel
+          3 tesoura 
+          */
+
+          let sortear = () => {
+            let n =  Math.ceil(Math.random()*3);
+            if(n==1){
+              jogadapc.replaceChildren(pedra.cloneNode())
+            }
+            else if(n==2){
+              jogadapc.replaceChildren(papel.cloneNode())
+            }
+            else if(n==3){
+              jogadapc.replaceChildren(tesoura.cloneNode())
+            }
+            return n
+          }
+
+          const pedra = document.getElementById('pedra')
+          const tesoura = document.getElementById('tesoura')
+          const jogadauser = document.getElementById("jogadauser")
+          const jogadapc = document.getElementById("jogadapc")
+          const papel = document.getElementById('papel')
+          const resultado = document.querySelector("#resultado")
+          let seuplacar = 0;
+          let placarpc = 0;
+          let nempate = 0;
+
+          function jogar(u){
+            let pc = sortear();
+            if(u==1 && pc==2){
+              resultado.innerHTML="voce perdeu!";
+              placarpc = ++placarpc;
+              Seuplacar.innerHTML="você: "+seuplacar
+              Placarpc.innerHTML="pc: "+placarpc
+              Nempate.innerHTML="empates: "+nempate
+            }
+            else if(u==2 && pc==3){
+              resultado.innerHTML="voce perdeu!";
+              placarpc = ++placarpc;
+              Seuplacar.innerHTML="você: "+seuplacar
+              Placarpc.innerHTML="pc: "+placarpc
+              Nempate.innerHTML="empates: "+nempate
+            }
+            else if(u==3 && pc==1){
+              resultado.innerHTML = "voce perdeu!";
+              placarpc = ++placarpc;
+              Seuplacar.innerHTML="você: "+seuplacar
+              Placarpc.innerHTML="pc: "+placarpc
+              Nempate.innerHTML="empates: "+nempate
+            }
+            else if(u==pc){
+              resultado.innerHTML="voce empatou!";
+              nempate++;
+              Seuplacar.innerHTML="você: "+seuplacar
+              Placarpc.innerHTML="pc: "+placarpc
+              Nempate.innerHTML="empates: "+nempate
+            }
+            else{
+              resultado.innerHTML="voce venceu!";
+              seuplacar++;
+              Seuplacar.innerHTML="você: "+seuplacar
+              Placarpc.innerHTML="pc: "+placarpc
+              Nempate.innerHTML="empates: "+nempate
+            }
+          }
+
+          pedra.addEventListener("click", function(){
+            jogadauser.replaceChildren(pedra.cloneNode())
+            pedra.classList.add("escolhido");   
+            tesoura.classList.remove("escolhido");
+            papel.classList.remove("escolhido");
+            jogar(1);
+          })
+          papel.addEventListener("click", function(){
+            jogadauser.replaceChildren(papel.cloneNode())
+            papel.classList.add("escolhido");
+            tesoura.classList.remove("escolhido");
+            pedra.classList.remove("escolhido");
+            jogar(2);
+          })
+          tesoura.addEventListener("click", function(){
+            jogadauser.replaceChildren(tesoura.cloneNode())
+            tesoura.classList.add("escolhido");
+            papel.classList.remove("escolhido");
+            pedra.classList.remove("escolhido");
+            jogar(3);
+          })
+
+
+
+    </script>
+
+
+</body>
+</html>

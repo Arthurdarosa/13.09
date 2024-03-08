@@ -1,0 +1,46 @@
+body{
+    background-color:aquamarine ;
+}
+
+.escolha{
+    text-align: center;
+    margin: auto;
+    filter: drop-shadow(5px 5px 10px black);
+    width: 95%;
+    height: 330px;
+    background-color: rgb(102, 233, 200);
+}
+
+h1{
+    text-align: center;
+
+}
+
+img:hover{
+    transform: scale(1.1);
+    transition: .5s ;
+}
+
+.escolhido{
+    filter: drop-shadow(5px 5px 10px red) !important;
+}
+
+img{
+    filter: drop-shadow(5px 5px 10px black);
+}
+
+.jogada{
+    margin: auto;
+    text-align: center;
+}
+
+.jogada img{
+    height: 100px;
+    width: 100px;
+    filter: none !important;
+}
+
+p{
+    font-size: 25px;
+}
+
